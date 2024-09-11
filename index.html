@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Responsive</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="love-title">Te quiero Lau<span class="name"></span></h1>
+        <!-- <img src="img/otrooso.png" class="bear-img" alt="Oso adorable"> -->
+        
+        <!-- clase para colocar una imagen y a la par los botones -->
+        <div class="image-and-buttons">
+            <img src="img/romeo.jpg" class="bear-imgr" alt="Oso adorable">
+            <div class="button-group">
+                <button class="btn-music" id="playBtn">La Tormenta</button>
+                <button class="btn-music" id="playBtn2">Promise</button>
+                <button class="btn-music" id="playBtn3">You</button>
+            </div>
+        </div>
+   
+        <div class="floating-heart" style="top: 50%; left: 50%; animation-delay: 0s;">❤</div>
+        <div class="floating-heart" style="top: 75%; left: 68%; animation-delay: 1s;">❤</div>
+        <div class="floating-heart" style="top: 50%; left: 35%; animation-delay: 2s;">❤</div>
+        <div class="floating-heart" style="top: 75%; left: 68%; animation-delay: 3s;">❤</div>
+        <div class="floating-heart" style="top: 50%; left: 50%; animation-delay: 2s;">❤</div>
+        <div class="floating-heart" style="top: 75%; left: 30%; animation-delay: 3s;">❤</div>
+        <div class="floating-heart" style="top: 75%; left: 30%; animation-delay: 3s;">❤</div>
+        <div class="floating-heart" style="top: 50%; left: 50%; animation-delay: 2s;">❤</div>
+        <div class="floating-heart" style="top: 50%; left: 63%; animation-delay: 3s;">❤</div>
+       
+       
+        <div class="countdown-container">
+            <h2 class="countdown-title">Preparada...</h2>
+            <div class="countdown-horizontal" id="countdownDisplay">
+                <!-- El JavaScript llenará esto -->
+         
+        <!-- Conteo regresivo -->
+        <div class="countdown">
+            Tiempo restante: <span id="countdownDisplay"></span>
+        </div>
+
+        <audio id="myAudio" loop>
+            <source src="musica/Aventura La Tormenta.mp3" type="audio/mpeg">
+            <source src="musica/Romeo Santos - Promise (audio) ft. Usher.mp3" type="audio/mpeg">
+            <source src="musica/Romeo Santos - You (Audio).mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+        const buttons = [
+            document.getElementById('playBtn'),
+            document.getElementById('playBtn2'),
+            document.getElementById('playBtn3')
+        ];
+
+        // Lista de canciones (ruta de cada una)
+        const songs = [
+            'musica/Aventura La Tormenta.mp3',
+            'musica/Romeo Santos - Promise (audio) ft. Usher.mp3',
+            'musica/Romeo Santos - You (Audio).mp3'
+        ];
+
+        let currentPlaying = null;  // Variable para rastrear qué botón está reproduciendo actualmente
+
+        function playPauseAudio(buttonIndex) {
+            // Si ya se está reproduciendo otra canción, pausar el audio
+            if (currentPlaying !== null && currentPlaying !== buttonIndex) {
+                audio.pause();
+                buttons[currentPlaying].textContent = 'Reproducir ' + getSongName(currentPlaying); // Reiniciar el texto del botón anterior
+            }
+
+            // Si el mismo botón fue presionado nuevamente, se pausa la música
+            if (currentPlaying === buttonIndex) {
+                audio.pause();
+                buttons[buttonIndex].textContent = 'Reproducir ' + getSongName(buttonIndex);
+                currentPlaying = null; // Ningún botón estará reproduciendo
+            } else {
+                // Cambiar la fuente del audio a la canción correspondiente
+                audio.src = songs[buttonIndex];
+                audio.play();
+                buttons[buttonIndex].textContent = 'Pausar ' + getSongName(buttonIndex);
+                currentPlaying = buttonIndex; // Guardar qué botón está reproduciendo actualmente
+            }
+        }
+
+        // Obtener el nombre de la canción basado en el botón
+        function getSongName(buttonIndex) {
+            const songNames = ['La Tormenta', 'Promise', 'You'];
+            return songNames[buttonIndex];
+        }
+
+        // Asignar la función a cada botón
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => playPauseAudio(index));
+        });
+
+               // Establecer la fecha final para el conteo regresivo (por ejemplo, 7 de noviembre de 2024)
+               const countdownDate = new Date("Nov 7, 2024 23:59:59").getTime();
+
+// Actualizar el conteo regresivo cada 1 segundo
+const countdownFunction = setInterval(() => {
+    const now = new Date().getTime();
+    const timeLeft = countdownDate - now;
+
+    // Calcular los días, horas, minutos y segundos restantes
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Mostrar el resultado en el elemento con id="countdownDisplay"
+    document.getElementById("countdownDisplay").innerHTML = `
+        <div class="time-block">
+            <div class="time">${days.toString().padStart(3, '0')}</div>
+            <div class="label">días</div>
+        </div>
+        <div class="time-block">
+            <div class="time">${hours.toString().padStart(2, '0')}</div>
+            <div class="label">horas</div>
+        </div>
+        <div class="time-block">
+            <div class="time">${minutes.toString().padStart(2, '0')}</div>
+            <div class="label">minutos</div>
+        </div>
+        <div class="time-block">
+            <div class="time">${seconds.toString().padStart(2, '0')}</div>
+            <div class="label">segundos</div>
+        </div>
+    `;
+
+    // Si el conteo regresivo ha terminado, mostrar un mensaje
+    if (timeLeft < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdownDisplay").innerHTML = "<div class='time-block'><div class='time'>¡Tiempo terminado!</div></div>";
+    }
+}, 1000);
+    </script>
+</body>
+</html>
