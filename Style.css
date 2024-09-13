@@ -34,7 +34,7 @@ body {
     background: linear-gradient(to bottom, #ffffff, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    top: -100px;
+    top: -150px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     letter-spacing: 2px;
     position: relative;
