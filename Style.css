@@ -252,69 +252,68 @@ p {
 }
 
 .countdown-container {
-    background-color: rgba(30, 30, 30, 0.8);
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
     width: 100%;
-    max-width: 600px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .countdown-title {
     color: #ff6b6b;
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.2em;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-#countdownDisplay {
+.countdown-horizontal {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: stretch;
     flex-wrap: nowrap;
-    gap: 10px;
 }
 
 .time-block {
-    background-color: rgba(44, 44, 44, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
     flex: 1;
-    min-width: 60px;
+    background-color: rgba(44, 44, 44, 0.8);
+    border-radius: 5px;
+    padding: 5px 2px;
+    text-align: center;
+    margin: 0 2px;
 }
 
 .time {
-    font-size: 1.8em;
+    font-size: 1.4em;
     font-weight: bold;
     color: #ff6b6b;
 }
 
 .label {
-    font-size: 0.9em;
+    font-size: 0.7em;
     color: #a0a0a0;
-    margin-top: 5px;
+    margin-top: 2px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 390px) { /* iPhone 15 Pro width */
     .countdown-container {
-        padding: 10px;
+        padding: 5px;
     }
 
     .countdown-title {
-        font-size: 1.2em;
-    }
-
-    .time-block {
-        padding: 5px;
-        min-width: 50px;
+        font-size: 1em;
+        margin-bottom: 5px;
     }
 
     .time {
-        font-size: 1.4em;
+        font-size: 1.2em;
     }
 
     .label {
-        font-size: 0.7em;
+        font-size: 0.6em;
+    }
+
+    .time-block {
+        padding: 3px 1px;
+        margin: 0 1px;
     }
 }
