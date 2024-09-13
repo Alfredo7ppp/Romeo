@@ -29,12 +29,12 @@ body {
     font-size: 3.5em;
     color: #000000;
     position: absolute;
-    top: 10px; /* Ajusta la distancia desde la parte superior */
+    top: 60px; /* Ajusta la distancia desde la parte superior */
     left: 5px; 
     background: linear-gradient(to bottom, #ffffff, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    top: -150px;
+    top: -100px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     letter-spacing: 2px;
     position: relative;
@@ -172,29 +172,13 @@ p {
 /* Contenedor para imagen y botones */
 .image-and-buttons {
     display: flex;
-    align-items: center; 
-    justify-content: center; 
-    gap: 50px; 
-    margin-top: 180px;
-    }
-
-.button-group {
-display: flex;
-flex-direction: column; 
-gap: 15px; 
-}
-
-/* Botones */
-.btn-music {
-padding: 12px 24px;
-font-size: 1.2em;
-color: white;
-background: linear-gradient(to bottom, #14d0ff, #2d2b2e);
-border: none;
-border-radius: 25px;
-cursor: pointer;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-transition: background-color 0.3s, transform 0.3s;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
 }
 
 .bear-imgr {
@@ -205,6 +189,7 @@ transition: background-color 0.3s, transform 0.3s;
 
 .button-group {
     display: flex;
+    flex-direction: column; /*botones en una columna*/ 
     gap: 10px;
 }
 
