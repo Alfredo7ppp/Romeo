@@ -170,6 +170,13 @@ p {
 }
 
 /* Contenedor para imagen y botones */
+.image-and-buttons {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 50px; 
+    margin-top: 180px;
+    }
 
 .button-group {
 display: flex;
